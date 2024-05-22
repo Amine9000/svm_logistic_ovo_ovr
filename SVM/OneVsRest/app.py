@@ -56,19 +56,16 @@ def model_predict(x, models):
 
     arr = np.array(predictions).T
 
-    pred_classes = np.zeros((arr.shape[0], 1),dtype=np.int32).ravel()
+    pred_classes = np.zeros((arr.shape[0], 1), dtype=np.int32).ravel()
 
     for i, row in enumerate(arr):
         row_maxes = np.argwhere(row == 1).ravel()
 
         # Sometimes, the images aren't classified into any class.
-        print(accs[row_maxes])
         if (len(accs[row_maxes]) >= 1):
             pred_classes[i] = row_maxes[np.argmax(accs[row_maxes])]
-            print(pred_classes[i])
         else:
             pred_classes[i] = 0
-            print(pred_classes[i])
 
     return pred_classes
 
