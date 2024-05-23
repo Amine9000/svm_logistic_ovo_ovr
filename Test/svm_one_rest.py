@@ -40,7 +40,7 @@ def train_models():
         model.fit(X_train, d_y_train)
         predictions = model.predict(X_test)
         acc = accuracy_score(d_y_test, predictions)
-        print("Accuracy for digit ", digit, " is ", acc)
+        print(f"Accuracy for digit {digit} is {acc:.3f}")
         models.append([model, acc])
 
     return models

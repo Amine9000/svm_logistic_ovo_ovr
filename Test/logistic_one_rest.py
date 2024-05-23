@@ -4,7 +4,7 @@ from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 from utils import imshow
 
 
@@ -36,11 +36,11 @@ def train_models():
     for digit in range(10):
         d_y_train = np.where(y_train == digit, 1, -1)
         d_y_test = np.where(y_test == digit, 1, -1)
-        model = SVC()
+        model = LogisticRegression()
         model.fit(X_train, d_y_train)
         predictions = model.predict(X_test)
         acc = accuracy_score(d_y_test, predictions)
-        print("Accuracy for digit ", digit, " is ", acc)
+        print(f"Accuracy for digit {digit} is {acc:.3f}")
         models.append([model, acc])
 
     return models

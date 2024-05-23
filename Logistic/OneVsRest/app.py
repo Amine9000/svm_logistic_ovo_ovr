@@ -46,9 +46,10 @@ def train_models():
     return models
 
 
-def model_predict(x, models):
-    models = [models[0] for models in models_info]
-    accs = np.array([models[1] for models in models_info])
+def model_predict(x, models_info):
+    models = [mdls[0] for mdls in models_info]
+    accs = np.array([mdls[1] for mdls in models_info])
+    
     predictions = []
     for model in models:
         prediction = model.predict(x)
